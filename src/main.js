@@ -6,7 +6,7 @@ import { Level3 } from "./scenes/Level3";
 import { Credits } from "./scenes/Credits";
 
 
-let game = new Phaser.Game({
+export const config = {
     width: 800,
     height: 600,
     scene: [
@@ -25,4 +25,29 @@ let game = new Phaser.Game({
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH
     }
-});
+};
+
+
+export const gameState = {
+    
+    // cursors: 7
+    
+    // active: true,
+  
+    // player: {x: 225, y: 470},
+    // platform: {},
+  
+    // bullets: {},
+    // bulletTime: 0,
+  
+    // enemies: 7,
+    // enemyVelocity: 1,
+  
+    // enemyBombs: {},
+  
+    // level: 0,
+    // lives: 3,
+    // score: 0,
+  }
+
+  let game = new Phaser.Game(config);

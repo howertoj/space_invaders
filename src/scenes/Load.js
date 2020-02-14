@@ -12,15 +12,22 @@ export class Load extends Phaser.Scene {
     }
     preload() {
         // preload files here
-        
-        // test files
-        this.load.image("gray-platform", "./assets/art/gray-platform.png");
-        this.load.image("gray-square", "./assets/art/gray-square.png");
 
-        //simulate loading many files
-        for (var i = 0; i < 100; i++) {
-            this.load.image("gray-square" + i, "./assets/art/gray-square.png");
-        }
+        // test files
+        this.load.image('orange-square', 'assets/art/orange-square.png');
+        this.load.image('yellow-square', 'assets/art/yellow-square.png');
+        this.load.image('green-square', 'assets/art/green-square.png');
+        this.load.image('gray-square', 'assets/art/gray-square.png');
+        this.load.image('red-square', 'assets/art/red-square.png');
+        this.load.image('gray-square', 'gray-square.png')
+        this.load.image('gray-platform', 'assets/art/gray-platform.png');
+        
+
+
+        // simulate loading many files
+        // for (var i = 0; i < 100; i++) {
+        //     this.load.image("gray-square" + i, "./assets/art/gray-square.png");
+        // }
 
         let loadingBar = this.add.graphics({
             fillStyle: {
@@ -59,7 +66,6 @@ export class Load extends Phaser.Scene {
 
     }
     create() {
-        // console.log("Load - Create");
         this.scene.start(CST.SCENES.MENU);
     }
 }
