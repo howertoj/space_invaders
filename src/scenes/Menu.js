@@ -14,7 +14,7 @@ export class Menu extends Phaser.Scene {
 
         
     }
-    
+
     create() {
 
         // create black background, title text
@@ -74,5 +74,5 @@ export class Menu extends Phaser.Scene {
 
 
 
-      }
+    }
 }

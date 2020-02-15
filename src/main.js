@@ -1,16 +1,27 @@
 import { Load } from "./scenes/Load";
 import { Menu } from "./scenes/Menu";
+import { Options } from "./scenes/Options";
 import { Level1 } from "./scenes/Level1";
 import { Level2 } from "./scenes/Level2";
 import { Level3 } from "./scenes/Level3";
 import { Credits } from "./scenes/Credits";
 
 
+// export default class Level extends Phaser.Scene {
+
+//     create() {
+
+//     }
+
+// }
+
+
+
 export const config = {
     width: 800,
     height: 600,
     scene: [
-        Load, Menu, Level1, Level2, Level3, Credits
+        Load, Menu, Options, Level1, Level2, Level3, Credits
     ],
     render: {
         pixelArt: true
@@ -29,25 +40,35 @@ export const config = {
 
 
 export const gameState = {
+    active: true,
+    player: {x: 400, y: 470},
     
-    // cursors: 7
     
-    // active: true,
+
   
-    // player: {x: 225, y: 470},
     // platform: {},
   
-    // bullets: {},
-    // bulletTime: 0,
+    bullets: {},
+    bulletTime: 0,
   
     // enemies: 7,
-    // enemyVelocity: 1,
+    enemyVelocity: 2,
   
-    // enemyBombs: {},
+    enemyBombs: {},
   
-    // level: 0,
-    // lives: 3,
-    // score: 0,
-  }
+    level: 0,
+    lives: 3,
+    score: 0,
+
+
+}
+
+gameState.speak = function() {
+    console.log("SPEAK")
+}
+
+
+
+
 
   let game = new Phaser.Game(config);
