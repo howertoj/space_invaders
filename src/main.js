@@ -31,17 +31,13 @@ export const config = {
 
 export const gameState = {
     active: true,
-    player: {x: 400, y: 480},
-    
+    player: {x: 400, y: 450},
     
 
   
-    // platform: {},
-  
     bullets: {},
     bulletTime: 0,
-  
-    // enemies: 7,
+
     enemyVelocity: 2,
   
     enemyBombs: {},

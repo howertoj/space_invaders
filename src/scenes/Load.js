@@ -26,9 +26,11 @@ export class Load extends Phaser.Scene {
         this.load.image('tokyo', 'assets/art/tokyo.png');
         this.load.image('wormhole', 'assets/art/wormhole.png');
         this.load.image('nebula', 'assets/art/nebula.png');
-        // this.load.spriteSheet('ufogreen', 'assets/art/ufogreen.png', 512, 160, 8);
+        this.load.image('earthsun', 'assets/art/earthsun.png')
 
+        this.load.spritesheet('moonlander', 'assets/art/moonlander.png', { frameWidth: 150, frameHeight: 155 });
         this.load.spritesheet('ufo-green', 'assets/art/ufogreen.png', { frameWidth: 340, frameHeight: 160 });
+        this.load.spritesheet('rocket', 'assets/art/rocket.png', { frameWidth: 256, frameHeight: 256});
 
         
 

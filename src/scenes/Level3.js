@@ -45,7 +45,7 @@ export class Level3 extends Level {
     update(time) {
         if (this.enemiesCount() === 0) {
             gameState.active = false;
-            this.scene.start(CST.SCENES.LEVEL3);
+            this.scene.start(CST.SCENES.CREDITS);
         }
         if (gameState.active) {
             this.playerMove();

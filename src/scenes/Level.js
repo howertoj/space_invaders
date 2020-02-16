@@ -10,7 +10,7 @@ export class Level extends Phaser.Scene{
     playerShoot(time) {
         if (gameState.cursors.space.isDown) {
             if (time > gameState.bulletTime) {
-            gameState.bullets.create(gameState.player.x, gameState.player.y - 20, 'yellow-square').setVelocityY(-600);
+            gameState.bullets.create(gameState.player.x, gameState.player.y - 20, 'rocket').setVelocityY(-400).setScale(.3);
             gameState.bulletTime = time + 250;
             }
         }
@@ -90,8 +90,26 @@ export class Level extends Phaser.Scene{
     }
 
     createPlayer() {
-        gameState.player = this.physics.add.sprite(gameState.player.x, gameState.player.y, "orange-square").setCollideWorldBounds(true);
+        gameState.player = this.physics.add.sprite(gameState.player.x, gameState.player.y, "moonlander");
+        gameState.player.setCollideWorldBounds(true);
+        gameState.player.setScale(.5)
+
+        
+        
+        // .setCollideWorldBounds(true);
+
+        this.anims.create({
+            key: 'landerAnim',
+            frames: this.anims.generateFrameNumbers('moonlander', { start: 0, end: 4 }),
+            frameRate: 8,
+            repeat: -1
+        });
+
+        gameState.player.anims.play('landerAnim', true)
+
     }
+
+
 
     createBullets() {
         gameState.bullets = this.physics.add.group();
@@ -135,10 +153,6 @@ export class Level extends Phaser.Scene{
         this.physics.add.collider(gameState.platform, gameState.enemyBombs, (platform, bomb) => {
           bomb.destroy();
         });
-
-        // this.physics.add.collider(gameState.enemyBombs, gameState.platform, (bomb, platform) => {
-        //     bomb.destroy();
-        //   });
     
         gameState.playerBombCollider = this.physics.add.collider(gameState.player, gameState.enemyBombs, (player, bomb) => {
           
@@ -178,16 +192,6 @@ export class Level extends Phaser.Scene{
             this.scene.start(CST.SCENES.MENU)
         })
     }
-
-    // createAnimations() {
-    //     this.anims.create({
-    //         key: 'ufoLights',
-    //         frames: this.anims.generateFrameNumbers('ufo-green', { start: 0, end: 7 }),
-    //         frameRate: 4,
-    //         repeat: -1
-    //     });
-    // }
-
 
 
 
