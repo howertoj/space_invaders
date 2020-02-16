@@ -22,6 +22,7 @@ export class Level1 extends Level {
         // level setup - platform, player, enemies
         // this.createBackground(0x110022)
         this.add.image(0, 0, 'sanfrancisco').setOrigin(0, 0);
+        this.createAnimations();
         this.createPlatform();
         this.setScoreboardBackground();
         this.createPlayer();
@@ -64,7 +65,7 @@ export class Level1 extends Level {
             this.playerMove();
             this.playerShoot(time);
             this.setScoreboard();
-            // this.enemiesMove();
+            this.enemiesMove();
         }
     }
 

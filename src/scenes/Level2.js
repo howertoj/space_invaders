@@ -21,12 +21,14 @@ export class Level2 extends Level {
         // level setup - platform, player, enemies
         // this.createBackground(0x110022)
         this.add.image(0, 0, 'moon').setOrigin(0, 0);
+        this.createAnimations();
         this.createPlatform();
         this.setScoreboardBackground();
         this.createPlayer();
         this.createBullets();
+        
         this.createEnemies();
-        // this.startBombing();
+        this.startBombing();
         this.createColliders();
         this.createControls();
         gameState.active = true;

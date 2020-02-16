@@ -18,13 +18,14 @@ export class Level3 extends Level {
     create() {
         // level setup - platform, player, enemies
         this.add.image(0, 0, 'wormhole').setOrigin(0, 0);
-        // this.add.image(0, 0, 'wormhole')
+        this.createAnimations();
         this.createPlatform();
         this.setScoreboardBackground();
         this.createPlayer();
         this.createBullets();
+        
         this.createEnemies();
-        // this.startBombing();
+        this.startBombing();
         this.createColliders();
         this.createControls();
         gameState.active = true;

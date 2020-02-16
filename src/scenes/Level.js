@@ -67,14 +67,6 @@ export class Level extends Phaser.Scene{
           callbackScope: this,
           loop: true,
         });
-
-
-        this.anims.create({
-            key: 'laserBlast',
-            frames: this.anims.generateFrameNumbers('alienblast', { start: 0, end: 5 }),
-            frameRate: 8,
-            repeat: -1
-        });
     }
 
     setScoreboardBackground() {
@@ -101,20 +93,7 @@ export class Level extends Phaser.Scene{
         gameState.player = this.physics.add.sprite(gameState.player.x, gameState.player.y, "moonlander");
         gameState.player.setCollideWorldBounds(true);
         gameState.player.setScale(.5)
-
-        
-        
-        // .setCollideWorldBounds(true);
-
-        this.anims.create({
-            key: 'landerAnim',
-            frames: this.anims.generateFrameNumbers('moonlander', { start: 0, end: 4 }),
-            frameRate: 8,
-            repeat: -1
-        });
-
         gameState.player.anims.play('landerAnim', true)
-
     }
 
 
@@ -122,12 +101,7 @@ export class Level extends Phaser.Scene{
     createBullets() {
         gameState.bullets = this.physics.add.group();
 
-        this.anims.create({
-            key: 'ufoLights',
-            frames: this.anims.generateFrameNumbers('ufo-green', { start: 0, end: 7 }),
-            frameRate: 8,
-            repeat: -1
-        });
+
 
     }
 
@@ -139,14 +113,6 @@ export class Level extends Phaser.Scene{
               gameState.enemies.create(125 + 75 * j, 50 + 50 * i, 'ufo-green').setScale(0.25)
             }
         }
-
-        this.anims.create({
-            key: 'ufoLights',
-            frames: this.anims.generateFrameNumbers('ufo-green', { start: 0, end: 7 }),
-            frameRate: 8,
-            repeat: -1
-        });
-
         gameState.enemies.getChildren().forEach(function(each) {
             each.anims.play('ufoLights', true);
         })
@@ -168,16 +134,7 @@ export class Level extends Phaser.Scene{
     }
 
     createColliders() {
-        
-        this.anims.create({
-            key: 'explosion1anim',
-            frames: this.anims.generateFrameNumbers('explosion1', { start: 0, end: 4 }),
-            frameRate: 16,
-            duration: 24,
-            hideOnComplete: true
-        });
-        
-        
+
         this.physics.add.collider(gameState.platform, gameState.player);
     
         gameState.bulletsEnemiesCollider = this.physics.add.collider(gameState.bullets, gameState.enemies, (bullet, enemy) => {
@@ -206,6 +163,46 @@ export class Level extends Phaser.Scene{
         });
     }
 
+    createAnimations() {
+
+        this.anims.create({
+            key: 'explosion1anim',
+            frames: this.anims.generateFrameNumbers('explosion1', { start: 0, end: 4 }),
+            frameRate: 16,
+            duration: 24,
+            hideOnComplete: true
+        });
+
+        this.anims.create({
+            key: 'ufoLights',
+            frames: this.anims.generateFrameNumbers('ufo-green', { start: 0, end: 7 }),
+            frameRate: 8,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'ufoLights',
+            frames: this.anims.generateFrameNumbers('ufo-green', { start: 0, end: 7 }),
+            frameRate: 8,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'laserBlast',
+            frames: this.anims.generateFrameNumbers('alienblast', { start: 0, end: 5 }),
+            frameRate: 8,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'landerAnim',
+            frames: this.anims.generateFrameNumbers('moonlander', { start: 0, end: 4 }),
+            frameRate: 8,
+            repeat: -1
+        });
+
+    }
+
     createControls() {
         gameState.cursors = this.input.keyboard.createCursorKeys();
 
@@ -222,6 +219,7 @@ export class Level extends Phaser.Scene{
 
     gameOver() {
         console.log("GAME OVER")
+        this.setScoreboard();
         gameState.active = false;
         gameState.bullets.destroy();
         gameState.enemyBombLoop.destroy();
@@ -230,7 +228,8 @@ export class Level extends Phaser.Scene{
         this.add.text(400, 250, "GAME OVER", { fontSize: '30px', fill: '#ffffff' }).setOrigin(0.5)
         let back = this.add.text(400, 350, "Return to Menu", { fontSize: '20px', fill: '#ffffff' }).setOrigin(0.5).setInteractive();
         back.on('pointerup', () => {
-            this.scene.start(CST.SCENES.MENU)
+            // this.scene.stop(CST.SCENES.LEVEL1);
+            this.scene.start(CST.SCENES.CREDITS);
         })
     }
 
