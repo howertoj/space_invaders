@@ -69,6 +69,10 @@ export class Level extends Phaser.Scene{
         });
     }
 
+    setScoreboardBackground() {
+        this.add.rectangle(0, gameState.platform.y -10, config.width, config.height - gameState.platform.y + 10, "0x000000").setOrigin(0, 0).setDepth(0);
+    }
+
     //Update scoreboard
     setScoreboard() {
         if (!this.levelText) this.levelText = this.add.text(400, 510, `Level: ${this.levelNumber}`, { fontSize: '20px', fill: '#ffffff' });
@@ -82,7 +86,10 @@ export class Level extends Phaser.Scene{
 
 
     createPlatform() {
-        gameState.platform = this.physics.add.staticGroup().create(400, 490, 'gray-platform');
+        gameState.platform = this.physics.add.staticGroup().create(0, 500, 'gray-platform').setVisible(true).setOrigin(0, 0);
+        // gameState.platform = this.physics.add.staticGroup().create(400, 490, 'gray-platform').setVisible(false);
+
+        // this.add.rectangle(0, gameState.platform.y, config.width, config.height - gameState.platform.y, "0x000000").setOrigin(0, 0).setDepth(0);
     }
 
     createPlayer() {

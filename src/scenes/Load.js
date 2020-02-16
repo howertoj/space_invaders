@@ -19,15 +19,19 @@ export class Load extends Phaser.Scene {
         this.load.image('green-square', 'assets/art/green-square.png');
         this.load.image('gray-square', 'assets/art/gray-square.png');
         this.load.image('red-square', 'assets/art/red-square.png');
-        this.load.image('gray-square', 'gray-square.png')
+        this.load.image('gray-square', 'gray-square.png');
         this.load.image('gray-platform', 'assets/art/gray-platform.png');
+        this.load.image('moon', 'assets/art/moon.png');
+        this.load.image('sanfrancisco', 'assets/art/sanfrancisco.png');
+        this.load.image('tokyo', 'assets/art/tokyo.png');
+        this.load.image('wormhole', 'assets/art/wormhole.png');
+        this.load.image('nebula', 'assets/art/nebula.png');
+        // this.load.spriteSheet('ufogreen', 'assets/art/ufogreen.png', 512, 160, 8);
+
+        this.load.spritesheet('ufogreen', 'assets/art/ufogreen.png', { frameWidth: 512, frameHeight: 160 });
+
         
 
-
-        // simulate loading many files
-        // for (var i = 0; i < 100; i++) {
-        //     this.load.image("gray-square" + i, "./assets/art/gray-square.png");
-        // }
 
         let loadingBar = this.add.graphics({
             fillStyle: {

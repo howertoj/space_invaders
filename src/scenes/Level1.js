@@ -20,8 +20,10 @@ export class Level1 extends Level {
     create() {
         
         // level setup - platform, player, enemies
-        this.createBackground(0x110022)
+        // this.createBackground(0x110022)
+        this.add.image(0, 0, 'sanfrancisco').setOrigin(0, 0);
         this.createPlatform();
+        this.setScoreboardBackground();
         this.createPlayer();
         this.createBullets();
         this.createEnemies();
@@ -30,8 +32,10 @@ export class Level1 extends Level {
         this.createControls();
         gameState.active = true;
 
+        this.add.sprite(400, 100, 'ufogreen')
+
         // for testing: button to cycle through levels
-        this.add.text(100, 100, "Level1", { fontSize: '20px', fill: '#ffffff' }).setOrigin(0.5)
+        // this.add.text(100, 100, "Level1", { fontSize: '20px', fill: '#ffffff' }).setOrigin(0.5)
         let next = this.add.text(700, 550, "NEXT LEVEL", { fontSize: '20px', fill: '#ffffff' }).setOrigin(0.5).setInteractive();
         let last = this.add.text(100, 550, "PREV LEVEL", { fontSize: '20px', fill: '#ffffff' }).setOrigin(0.5).setInteractive();
         next.on('pointerup', () => {

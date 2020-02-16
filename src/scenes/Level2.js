@@ -19,8 +19,10 @@ export class Level2 extends Level {
 
     
         // level setup - platform, player, enemies
-        this.createBackground(0x110022)
+        // this.createBackground(0x110022)
+        this.add.image(0, 0, 'moon').setOrigin(0, 0);
         this.createPlatform();
+        this.setScoreboardBackground();
         this.createPlayer();
         this.createBullets();
         this.createEnemies();
@@ -31,7 +33,7 @@ export class Level2 extends Level {
         
 
     // for testing: button to cycle through levels
-    this.add.text(100, 100, "Level2", { fontSize: '20px', fill: '#ffffff' }).setOrigin(0.5).setInteractive();
+    // this.add.text(100, 100, "Level2", { fontSize: '20px', fill: '#ffffff' }).setOrigin(0.5).setInteractive();
     let next = this.add.text(700, 550, "NEXT LEVEL", { fontSize: '20px', fill: '#ffffff' }).setOrigin(0.5).setInteractive();
     let last = this.add.text(100, 550, "PREV LEVEL", { fontSize: '20px', fill: '#ffffff' }).setOrigin(0.5).setInteractive();
     next.on('pointerup', () => {

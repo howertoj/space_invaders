@@ -31,7 +31,7 @@ export const config = {
 
 export const gameState = {
     active: true,
-    player: {x: 400, y: 470},
+    player: {x: 400, y: 480},
     
     
 
