@@ -26,13 +26,18 @@ export class Level1 extends Level {
         this.setScoreboardBackground();
         this.createPlayer();
         this.createBullets();
+        
         this.createEnemies();
         // this.startBombing();
         this.createColliders();
         this.createControls();
         gameState.active = true;
 
-        this.add.sprite(400, 100, 'ufogreen')
+
+
+        
+
+        // this.add.sprite(400, 100, 'ufogreen')
 
         // for testing: button to cycle through levels
         // this.add.text(100, 100, "Level1", { fontSize: '20px', fill: '#ffffff' }).setOrigin(0.5)

@@ -86,10 +86,7 @@ export class Level extends Phaser.Scene{
 
 
     createPlatform() {
-        gameState.platform = this.physics.add.staticGroup().create(0, 500, 'gray-platform').setVisible(true).setOrigin(0, 0);
-        // gameState.platform = this.physics.add.staticGroup().create(400, 490, 'gray-platform').setVisible(false);
-
-        // this.add.rectangle(0, gameState.platform.y, config.width, config.height - gameState.platform.y, "0x000000").setOrigin(0, 0).setDepth(0);
+        gameState.platform = this.physics.add.staticGroup().create(400, 500, 'gray-platform').setVisible(true);
     }
 
     createPlayer() {
@@ -104,11 +101,21 @@ export class Level extends Phaser.Scene{
     createEnemies() {
         gameState.enemies = this.physics.add.group()
         for (let i = 0; i < 3; i++) {
-            for (let j = 0; j < 13; j++) {
-              gameState.enemies.create(100 + 50 * j, 50 + 50 * i, 'red-square')
+            for (let j = 0; j < 8; j++) {
+              gameState.enemies.create(125 + 75 * j, 50 + 50 * i, 'ufo-green').setScale(0.25)
             }
         }
-        // this.startBombing();
+
+        this.anims.create({
+            key: 'ufoLights',
+            frames: this.anims.generateFrameNumbers('ufo-green', { start: 0, end: 7 }),
+            frameRate: 8,
+            repeat: -1
+        });
+
+        gameState.enemies.getChildren().forEach(function(each) {
+            each.anims.play('ufoLights', true);
+        })
     }
 
     // Select all of the low-flying enemies and randomly drop bombs
@@ -128,6 +135,10 @@ export class Level extends Phaser.Scene{
         this.physics.add.collider(gameState.platform, gameState.enemyBombs, (platform, bomb) => {
           bomb.destroy();
         });
+
+        // this.physics.add.collider(gameState.enemyBombs, gameState.platform, (bomb, platform) => {
+        //     bomb.destroy();
+        //   });
     
         gameState.playerBombCollider = this.physics.add.collider(gameState.player, gameState.enemyBombs, (player, bomb) => {
           
@@ -167,6 +178,15 @@ export class Level extends Phaser.Scene{
             this.scene.start(CST.SCENES.MENU)
         })
     }
+
+    // createAnimations() {
+    //     this.anims.create({
+    //         key: 'ufoLights',
+    //         frames: this.anims.generateFrameNumbers('ufo-green', { start: 0, end: 7 }),
+    //         frameRate: 4,
+    //         repeat: -1
+    //     });
+    // }
 
 
 

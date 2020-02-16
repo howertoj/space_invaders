@@ -28,7 +28,7 @@ export class Load extends Phaser.Scene {
         this.load.image('nebula', 'assets/art/nebula.png');
         // this.load.spriteSheet('ufogreen', 'assets/art/ufogreen.png', 512, 160, 8);
 
-        this.load.spritesheet('ufogreen', 'assets/art/ufogreen.png', { frameWidth: 512, frameHeight: 160 });
+        this.load.spritesheet('ufo-green', 'assets/art/ufogreen.png', { frameWidth: 340, frameHeight: 160 });
 
         
 
