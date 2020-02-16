@@ -62,5 +62,9 @@ export class Credits extends Phaser.Scene {
 
 // Earth Sun:  https://wallpaperscraft.com/download/solar_system_planets_moon_earth_sun_space_65102/800x600
 
+// Missile Explosion: https://ya-webdesign.com/imgdownload.html
+
+// Beam: https://giphy.com/gifs/beam-6fbksneAJLITC
+
 
 

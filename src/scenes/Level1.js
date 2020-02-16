@@ -28,7 +28,7 @@ export class Level1 extends Level {
         this.createBullets();
         
         this.createEnemies();
-        // this.startBombing();
+        this.startBombing();
         this.createColliders();
         this.createControls();
         gameState.active = true;

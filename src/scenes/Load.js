@@ -31,6 +31,9 @@ export class Load extends Phaser.Scene {
         this.load.spritesheet('moonlander', 'assets/art/moonlander.png', { frameWidth: 150, frameHeight: 155 });
         this.load.spritesheet('ufo-green', 'assets/art/ufogreen.png', { frameWidth: 340, frameHeight: 160 });
         this.load.spritesheet('rocket', 'assets/art/rocket.png', { frameWidth: 256, frameHeight: 256});
+        this.load.spritesheet('explosion1', 'assets/art/explosion1.png', { frameWidth: 210, frameHeight: 200 });
+        this.load.spritesheet('beam', 'assets/art/beam.png', { frameWidth: 571, frameHeight: 200});
+        this.load.spritesheet('alienblast', 'assets/art/alienblast.png', { frameWidth: 120, frameHeight: 103});
 
         
 

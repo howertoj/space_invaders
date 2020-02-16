@@ -67,6 +67,14 @@ export class Level extends Phaser.Scene{
           callbackScope: this,
           loop: true,
         });
+
+
+        this.anims.create({
+            key: 'laserBlast',
+            frames: this.anims.generateFrameNumbers('alienblast', { start: 0, end: 5 }),
+            frameRate: 8,
+            repeat: -1
+        });
     }
 
     setScoreboardBackground() {
@@ -113,6 +121,14 @@ export class Level extends Phaser.Scene{
 
     createBullets() {
         gameState.bullets = this.physics.add.group();
+
+        this.anims.create({
+            key: 'ufoLights',
+            frames: this.anims.generateFrameNumbers('ufo-green', { start: 0, end: 7 }),
+            frameRate: 8,
+            repeat: -1
+        });
+
     }
 
 
@@ -139,16 +155,38 @@ export class Level extends Phaser.Scene{
     // Select all of the low-flying enemies and randomly drop bombs
     enemyFire() {
         this.getLowEnemies().forEach(function(enemy) {
-            if(Math.random() > 0.8) gameState.enemyBombs.create(enemy.x, enemy.y + 20, 'gray-square').setGravityY(600);
+            if(Math.random() > 0.8) {
+                let newBomb = gameState.enemyBombs.create(enemy.x, enemy.y + 20, 'alienblast').setAngle(90)
+                newBomb.setGravityY(600);
+                newBomb.setScale(0.3);
+                newBomb.anims.play('laserBlast', true)
+
+
+            }
+            
         })
     }
 
     createColliders() {
+        
+        this.anims.create({
+            key: 'explosion1anim',
+            frames: this.anims.generateFrameNumbers('explosion1', { start: 0, end: 4 }),
+            frameRate: 16,
+            duration: 24,
+            hideOnComplete: true
+        });
+        
+        
         this.physics.add.collider(gameState.platform, gameState.player);
     
         gameState.bulletsEnemiesCollider = this.physics.add.collider(gameState.bullets, gameState.enemies, (bullet, enemy) => {
-          bullet.destroy();
-          enemy.destroy();
+            bullet.destroy();
+            enemy.destroy();
+
+            let newExplosion = this.add.sprite(enemy.x, enemy.y, 'explosion1');
+            newExplosion.anims.play('explosion1anim', true)
+
         });
         this.physics.add.collider(gameState.platform, gameState.enemyBombs, (platform, bomb) => {
           bomb.destroy();
@@ -156,6 +194,9 @@ export class Level extends Phaser.Scene{
     
         gameState.playerBombCollider = this.physics.add.collider(gameState.player, gameState.enemyBombs, (player, bomb) => {
           
+            let newExplosion = this.add.sprite(player.x, player.y, 'explosion1');
+            newExplosion.anims.play('explosion1anim', true)
+
           gameState.lives --;
           if (gameState.lives > 0) {
             gameState.enemyBombs.getChildren().forEach(bomb => bomb.destroy());
