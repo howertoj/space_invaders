@@ -7,16 +7,6 @@ import { Level3 } from "./scenes/Level3";
 import { Credits } from "./scenes/Credits";
 
 
-// export default class Level extends Phaser.Scene {
-
-//     create() {
-
-//     }
-
-// }
-
-
-
 export const config = {
     width: 800,
     height: 600,
@@ -29,7 +19,7 @@ export const config = {
     physics: {
         default: "arcade",
         arcade: {
-            debug: true
+            debug: false
         }
     },
     scale: {
@@ -63,12 +53,10 @@ export const gameState = {
 
 }
 
-gameState.speak = function() {
-    console.log("SPEAK")
-}
 
 
 
 
 
-  let game = new Phaser.Game(config);
+
+  export let game = new Phaser.Game(config);
