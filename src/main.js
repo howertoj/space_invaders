@@ -20,7 +20,8 @@ export const config = {
         default: "arcade",
         arcade: {
             debug: false
-        }
+        },
+        gravity: { y: 600}
     },
     scale: {
         mode: Phaser.Scale.FIT,
@@ -48,11 +49,5 @@ export const gameState = {
 
 
 }
-
-
-
-
-
-
 
   export let game = new Phaser.Game(config);

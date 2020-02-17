@@ -10,11 +10,30 @@ export class Level extends Phaser.Scene{
     playerShoot(time) {
         if (gameState.cursors.space.isDown) {
             if (time > gameState.bulletTime) {
-            gameState.bullets.create(gameState.player.x, gameState.player.y - 20, 'rocket').setVelocityY(-400).setScale(.3);
+            let newRocket = gameState.bullets.create(gameState.player.x, gameState.player.y - 20, 'rocket').setGravityY(-1200).setScale(.3);
+            newRocket.anims.play('rocketFlight', true)
             gameState.bulletTime = time + 250;
             }
         }
+        
     }
+
+    // Select all of the low-flying enemies and randomly drop bombs
+    enemyFire() {
+        this.getLowEnemies().forEach(function(enemy) {
+            if(Math.random() > 0.8) {
+                let newBomb = gameState.enemyBombs.create(enemy.x, enemy.y + 20, 'alienblast').setAngle(90)
+                // newBomb.setVelocityY(0);
+                newBomb.setGravityY(600)
+                newBomb.setScale(0.3);
+                newBomb.anims.play('laserBlast', true)
+
+
+            }
+            
+        })
+    }
+
     
     playerMove() {
             if (gameState.cursors.left.isDown) {
@@ -118,20 +137,7 @@ export class Level extends Phaser.Scene{
         })
     }
 
-    // Select all of the low-flying enemies and randomly drop bombs
-    enemyFire() {
-        this.getLowEnemies().forEach(function(enemy) {
-            if(Math.random() > 0.8) {
-                let newBomb = gameState.enemyBombs.create(enemy.x, enemy.y + 20, 'alienblast').setAngle(90)
-                newBomb.setGravityY(600);
-                newBomb.setScale(0.3);
-                newBomb.anims.play('laserBlast', true)
 
-
-            }
-            
-        })
-    }
 
     createColliders() {
         this.physics.add.collider(gameState.platform, gameState.player);
@@ -164,7 +170,7 @@ export class Level extends Phaser.Scene{
 
     playerCheck(){
         if(gameState.player.y > gameState.platform.y) {
-            gameState.player.y -= 20;
+            gameState.player.y -= 200;
         }
     }
 
@@ -206,6 +212,13 @@ export class Level extends Phaser.Scene{
             repeat: -1
         });
 
+        this.anims.create({
+            key: 'rocketFlight',
+            frames: this.anims.generateFrameNumbers('rocket', { start: 0, end: 2 }),
+            frameRate: 8,
+            repeat: -1
+        });
+
     }
 
     createControls() {
@@ -223,6 +236,7 @@ export class Level extends Phaser.Scene{
     }
 
     gameOver() {
+        this.playerCheck();
         console.log("GAME OVER")
         this.setScoreboard();
         gameState.active = false;

@@ -48,6 +48,7 @@ export class Level2 extends Level {
     }
 
     update(time) {
+        this.playerCheck();
         if (this.enemiesCount() === 0) {
             gameState.active = false;
             this.scene.start(CST.SCENES.LEVEL3);
@@ -56,7 +57,7 @@ export class Level2 extends Level {
             this.playerMove();
             this.playerShoot(time);
             this.setScoreboard();
-            // this.enemiesMove();
+            this.enemiesMove();
         }
     }
 }
