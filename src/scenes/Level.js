@@ -10,7 +10,7 @@ export class Level extends Phaser.Scene{
     playerShoot(time) {
         if (gameState.cursors.space.isDown) {
             if (time > gameState.bulletTime) {
-            let newRocket = gameState.bullets.create(gameState.player.x, gameState.player.y - 20, 'rocket').setGravityY(-1200).setScale(.3);
+            let newRocket = gameState.bullets.create(gameState.player.x, gameState.player.y - 20, 'rocket').setGravityY(-500).setScale(.3);
             newRocket.anims.play('rocketFlight', true)
             gameState.bulletTime = time + 250;
             }
@@ -24,7 +24,7 @@ export class Level extends Phaser.Scene{
             if(Math.random() > 0.8) {
                 let newBomb = gameState.enemyBombs.create(enemy.x, enemy.y + 20, 'alienblast').setAngle(90)
                 // newBomb.setVelocityY(0);
-                newBomb.setGravityY(600)
+                newBomb.setGravityY(500)
                 newBomb.setScale(0.3);
                 newBomb.anims.play('laserBlast', true)
 
@@ -103,7 +103,6 @@ export class Level extends Phaser.Scene{
         this.livesText.setText(`Lives: ${gameState.lives}`);
     }
 
-
     createPlatform() {
         gameState.platform = this.physics.add.staticGroup().create(400, 500, 'gray-platform').setVisible(true);
     }
@@ -114,8 +113,6 @@ export class Level extends Phaser.Scene{
         gameState.player.setScale(.5)
         gameState.player.anims.play('landerAnim', true)
     }
-
-
 
     createBullets() {
         gameState.bullets = this.physics.add.group();
@@ -128,8 +125,8 @@ export class Level extends Phaser.Scene{
     createEnemies() {
         gameState.enemies = this.physics.add.group()
         for (let i = 0; i < 3; i++) {
-            for (let j = 0; j < 8; j++) {
-              gameState.enemies.create(125 + 75 * j, 50 + 50 * i, 'ufo-green').setScale(0.25)
+            for (let j = 0; j < 6; j++) {
+              gameState.enemies.create(125 + 120 * j, 50 * i, 'ufo-green').setScale(0.25)
             }
         }
         gameState.enemies.getChildren().forEach(function(each) {

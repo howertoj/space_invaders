@@ -19,9 +19,9 @@ export const config = {
     physics: {
         default: "arcade",
         arcade: {
-            debug: false
+            debug: true,
         },
-        gravity: { y: 600}
+        // gravity: { y: 500}
     },
     scale: {
         mode: Phaser.Scale.FIT,

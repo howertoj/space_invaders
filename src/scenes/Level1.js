@@ -66,9 +66,7 @@ export class Level1 extends Level {
             this.playerShoot(time);
             this.setScoreboard();
             this.enemiesMove();
-        }
-
-        
+        }   
     }
 
 
