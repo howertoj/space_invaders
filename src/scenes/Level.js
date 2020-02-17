@@ -134,7 +134,6 @@ export class Level extends Phaser.Scene{
     }
 
     createColliders() {
-
         this.physics.add.collider(gameState.platform, gameState.player);
     
         gameState.bulletsEnemiesCollider = this.physics.add.collider(gameState.bullets, gameState.enemies, (bullet, enemy) => {
@@ -161,6 +160,12 @@ export class Level extends Phaser.Scene{
             this.gameOver();
           }
         });
+    }
+
+    playerCheck(){
+        if(gameState.player.y > gameState.platform.y) {
+            gameState.player.y -= 20;
+        }
     }
 
     createAnimations() {
@@ -221,6 +226,7 @@ export class Level extends Phaser.Scene{
         console.log("GAME OVER")
         this.setScoreboard();
         gameState.active = false;
+        gameState.player.setVelocityX(0);
         gameState.bullets.destroy();
         gameState.enemyBombLoop.destroy();
         gameState.playerBombCollider.destroy();

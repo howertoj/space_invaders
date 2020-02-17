@@ -18,9 +18,7 @@ export class Level1 extends Level {
 
     }
     create() {
-        
         // level setup - platform, player, enemies
-        // this.createBackground(0x110022)
         this.add.image(0, 0, 'sanfrancisco').setOrigin(0, 0);
         this.createAnimations();
         this.createPlatform();
@@ -57,6 +55,8 @@ export class Level1 extends Level {
     }
 
     update(time) {
+        this.playerCheck();
+        
         if (this.enemiesCount() === 0) {
             gameState.active = false;
             this.scene.start(CST.SCENES.LEVEL2);
@@ -67,6 +67,8 @@ export class Level1 extends Level {
             this.setScoreboard();
             this.enemiesMove();
         }
+
+        
     }
 
 

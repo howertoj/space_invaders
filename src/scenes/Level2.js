@@ -16,10 +16,7 @@ export class Level2 extends Level {
 
     }
     create() {
-
-    
         // level setup - platform, player, enemies
-        // this.createBackground(0x110022)
         this.add.image(0, 0, 'moon').setOrigin(0, 0);
         this.createAnimations();
         this.createPlatform();
