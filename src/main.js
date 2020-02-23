@@ -19,7 +19,7 @@ export const config = {
     physics: {
         default: "arcade",
         arcade: {
-            debug: true,
+            debug: false,
         },
         // gravity: { y: 500}
     },
@@ -39,7 +39,7 @@ export const gameState = {
     bullets: {},
     bulletTime: 0,
 
-    enemyVelocity: 2,
+    enemyVelocity: 3,
   
     enemyBombs: {},
   

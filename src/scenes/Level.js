@@ -21,7 +21,7 @@ export class Level extends Phaser.Scene{
     // Select all of the low-flying enemies and randomly drop bombs
     enemyFire() {
         this.getLowEnemies().forEach(function(enemy) {
-            if(Math.random() > 0.8) {
+            if(Math.random() > 0.7) {
                 let newBomb = gameState.enemyBombs.create(enemy.x, enemy.y + 20, 'alienblast').setAngle(90)
                 // newBomb.setVelocityY(0);
                 newBomb.setGravityY(500)
@@ -121,9 +121,10 @@ export class Level extends Phaser.Scene{
 
     }
 
-
     createEnemies() {
+        gameState.enemyVelocity = 3;
         gameState.enemies = this.physics.add.group()
+        
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 6; j++) {
               gameState.enemies.create(125 + 120 * j, 50 * i, 'ufo-green').setScale(0.25)
