@@ -25,6 +25,7 @@ export class Level3 extends Level {
         this.createBullets();
         
         this.createEnemies();
+        this.createEnemyBombs();
         this.startBombing();
         this.createColliders();
         this.createControls();
@@ -36,7 +37,7 @@ export class Level3 extends Level {
         let next = this.add.text(700, 550, "NEXT LEVEL", { fontSize: '20px', fill: '#ffffff' }).setOrigin(0.5).setInteractive();
         let last = this.add.text(100, 550, "PREV LEVEL", { fontSize: '20px', fill: '#ffffff' }).setOrigin(0.5).setInteractive();
         next.on('pointerup', () => {
-            this.scene.start(CST.SCENES.CREDITS);
+            this.scene.start(CST.SCENES.LEVEL4);
         })
         last.on('pointerup', () => {
             this.scene.start(CST.SCENES.LEVEL2);
@@ -47,7 +48,7 @@ export class Level3 extends Level {
         this.playerCheck();
         if (this.enemiesCount() === 0) {
             gameState.active = false;
-            this.scene.start(CST.SCENES.CREDITS);
+            this.scene.start(CST.SCENES.LEVEL4);
         }
         if (gameState.active) {
             this.playerMove();

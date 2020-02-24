@@ -4,6 +4,7 @@ import { Options } from "./scenes/Options";
 import { Level1 } from "./scenes/Level1";
 import { Level2 } from "./scenes/Level2";
 import { Level3 } from "./scenes/Level3";
+import { Level4 } from "./scenes/Level4";
 import { Credits } from "./scenes/Credits";
 
 
@@ -11,7 +12,7 @@ export const config = {
     width: 800,
     height: 600,
     scene: [
-        Load, Menu, Options, Level1, Level2, Level3, Credits
+        Load, Menu, Options, Level1, Level2, Level3, Level4, Credits
     ],
     render: {
         pixelArt: true
@@ -32,6 +33,7 @@ export const config = {
 
 export const gameState = {
     active: true,
+    complete: false,
     player: {x: 400, y: 450},
     
 
